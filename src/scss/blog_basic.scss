@@ -3,6 +3,11 @@
     monospace;
 }
 
+@font-face {
+  font-family: 'OPPO Sans 4.0';
+  src: url('/fonts/OPPO Sans 4.0.ttf') format('ttf');
+}
+
 .content > .post > .post-content > p {
   word-wrap: break-word;
   word-break: break-all;
@@ -27,7 +32,7 @@ body {
   margin: 0;
   line-height: 1.6em;
   color: var(--primary-high);
-  font-family: 'Open Sans', Helvetica, Arial, 'PingHei', 'PingFang SC', Helvetica, 'Work Sans', 'Hiragino Sans GB',
+  font-family: 'OPPO Sans 4.0', Helvetica, Arial, 'PingHei', 'PingFang SC', Helvetica, 'Work Sans', 'Hiragino Sans GB',
     'Microsoft YaHei', SimSun, sans-serif;
   font-size: 15px;
   width: 100%;
