@@ -128,7 +128,7 @@ mixin make_comments
           script.reload.
             function darkModeSync() {
               let utrcScript = document.querySelector('script#utrc_script');
-              console.log(utrcScript);
+              //- console.log(utrcScript);
               if (utrcScript)
                 utrcScript.setAttribute('theme', 'github-' + Anatolo.darkLightGet());
 
@@ -139,18 +139,18 @@ mixin make_comments
                   theme: `github-${Anatolo.darkLightGet()}`
                 }, 'https://utteranc.es');
               }
-              console.log(Anatolo.darkLightGet());
+              //- console.log(Anatolo.darkLightGet());
             }
             console.log('reload');
             darkModeSync();
             window.onload = () => {
-              console.log('loaded');
+              //- console.log('loaded');
               darkModeSync();
             };
             new MutationObserver(() => {
               darkModeSync();
               let el = document.getElementsByClassName('utterances-frame')[0];
-              console.log(el);
+              //- console.log(el);
               if (el) {
                 //- console.log(el);
                 //- el.addEventListener('load', darkModeSync);
