@@ -31,14 +31,17 @@ mixin make_post(item, is_detail)
             .tip!= (item.copyright || theme.copyright.default) + "<br>" + __("author") + ": " + (item.author || theme.author)
           else
             .tip!= item.copyright || theme.copyright.default
-      .meta
-        .info
-          if is_current('about')
-            span
-          else if is_current('guestbook')
-            span
-          else
-            i.fa.fa-sun-o
+      
+      if is_current('about')
+        span
+      else if is_current('guestbook')
+        span
+      else if is_current('links')
+        span
+      else
+        .meta
+          .info
+            //- i.fa.fa-sun-o
             span.date= date(item.date, "YYYY-MM-DD")
             if item.categories
               each cat in item.categories.sort('posts').data
