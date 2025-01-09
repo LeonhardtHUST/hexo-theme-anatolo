@@ -95,3 +95,53 @@ mixin make_comments
       if theme.gitalk.enable == true
         a#comments
         #gitalk_container(style="padding: 10px")
+
+    if theme.beaudar
+      if theme.beaudar.enable == true
+        - var bd_branch = "master"
+        - var bd_issue_term = "pathname"
+        - var bd_issue_label = "pathname"
+        - var bd_label = "comment"
+        - var bd_theme = "github-light"
+        - var bd_keep_theme = "true"
+        - var bd_loading = "true"
+        - var bd_comment_order = "asc"
+        - var bd_input_position = "bottom"
+        if theme.beaudar.branch
+          - bd_branch = theme.beaudar.branch
+        if theme.beaudar.issue_label
+          - bd_issue_label = theme.beaudar.issue_label
+        if theme.beaudar.issue_term
+          - bd_issue_term = theme.beaudar.issue_term
+        if theme.beaudar.label
+          - bd_label = theme.beaudar.label
+        if theme.beaudar.theme
+          - bd_theme = theme.beaudar.theme
+        if !theme.beaudar.keep_theme
+          - bd_keep_theme = "false"
+        if !theme.beaudar.loading
+          - bd_loading = "false"
+        if theme.beaudar.comment_order
+          - bd_comment_order = theme.beaudar.comment_order
+        if theme.beaudar.input_position
+          - bd_input_position = theme.beaudar.input_position
+        a#comments
+        #beaudar_container(style="padding: 10px")
+          script(
+            src="https://beaudar.lipk.org/client.js"
+            repo=theme.beaudar.repo 
+            branch=bd_branch
+            issue-term=bd_issue_term 
+            issue-label=bd_issue_label
+            label=bd_label
+            theme=bd_theme
+            keep-theme=bd_keep_theme
+            comment-order=bd_comment_order
+            input-position=bd_input_position
+            crossorigin="anonymous"
+            async
+          )
+          //- script.
+          //-   document.addEventListener("DOMContentLoaded", (event) => {
+          //-     Anatolo.darkLightSync()
+          //-   })
