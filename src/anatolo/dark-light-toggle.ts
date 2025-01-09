@@ -6,37 +6,30 @@ function setTheme() {
   const theme = localStorage.getItem('theme');
   if (theme) {
     document.querySelector('html')!.setAttribute('theme', theme);
-    const beaudarIframe = document.querySelector('.beaudar-frame');
-    // 与 beaudar 通信
-    if (beaudarIframe != null && (beaudarIframe as any).contentWindow) {
-      (beaudarIframe as any).contentWindow.postMessage({
+    const utrcIframe = document.querySelector('.utterances-frame');
+    if (utrcIframe != null && (utrcIframe as any).contentWindow) {
+      (utrcIframe as any).contentWindow.postMessage({
         type: 'set-theme',
         theme: `github-${theme}`
-      }, 'https://beaudar.lipk.org');
+      }, 'https://utteranc.es');
     }
   }
 }
 
 setTheme();
 
-export function darkLightToggle() {
+export function darkLightGet() {
   let themeNow = getTheme();
-  if (themeNow === 'default') {
-    themeNow = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'true';
-  }
-  if (themeNow === 'dark') {
+  if (themeNow === 'default')
+    themeNow = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return themeNow;
+}
+
+export function darkLightToggle() {
+  if (darkLightGet() === 'dark') {
     localStorage.setItem('theme', 'light');
   } else {
     localStorage.setItem('theme', 'dark');
   }
-  setTheme();
-}
-
-export function darkLightSync() {
-  let themeNow = getTheme();
-  if (themeNow === 'default') {
-    themeNow = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'true';
-  }
-  localStorage.setItem('theme', themeNow);
   setTheme();
 }

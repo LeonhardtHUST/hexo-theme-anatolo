@@ -1,6 +1,6 @@
 import { AnatoloSearch } from '../components/search';
 import * as comment from './comment';
-import { darkLightToggle, darkLightSync } from './dark-light-toggle';
+import { darkLightToggle, darkLightGet } from './dark-light-toggle';
 import { site } from './site';
 
 async function getPageTitle() {
@@ -22,5 +22,5 @@ export const Anatolo = {
       });
     },
   },
-  darkLightToggle, darkLightSync
+  darkLightToggle, darkLightGet
 };

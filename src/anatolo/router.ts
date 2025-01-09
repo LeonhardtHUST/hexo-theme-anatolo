@@ -217,10 +217,14 @@ function onPageChange(fn: () => void) {
 function reloadScript() {
   const body_scripts = document.querySelector('main-outlet')?.getElementsByTagName('script');
   for (const script of body_scripts ?? []) {
-    loadScript({
-      url: script.src,
-      script: script.textContent,
-    });
+    if (!script.hasAttribute('src') && !script.classList.contains('reload')) continue;
+    let scriptParent = script.parentNode;
+    scriptParent?.removeChild(script);
+    let newScript = document.createElement('script');
+    for (const attr of script.attributes)
+      newScript.setAttribute(attr.name, attr.value);
+    newScript.textContent = script.textContent;
+    scriptParent?.appendChild(newScript);
   }
 }
 
