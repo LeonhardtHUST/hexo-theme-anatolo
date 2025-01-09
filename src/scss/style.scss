@@ -59,6 +59,7 @@
   }
 
   .post-content {
+
     a {
       text-decoration: none;
       color: var(--tertiary);
@@ -683,18 +684,29 @@ a.btn {
   }
 }
 
+.friend-link-wrapper {
+    display: flex;
+    // padding-top: 1.5rem;
+    // padding-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .friend-link-container {
-  display: inline-block;
+  display: inline-flex;
+  align-self: stretch;
 }
 
 .friend-link-box {
-  width: 350px;
+  width: 280px;
   margin: 10px;
   padding: 10px;
   border: 1px solid var(--primary-100);
   border-radius: 10px;
   display: grid;
   grid-template: auto / 84px auto;
+  align-content: center;
+  align-self: stretch;
 }
 
 .friend-link-meta {
@@ -707,11 +719,15 @@ a.btn {
 
 .friend-link-avatar {
   width: 64px;
-  margin-right: 10px;
+  margin: auto;
+  display: grid;
 }
 
 .friend-link-avatar img {
   width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  align-self: center;
 }
 
 .float-button {
