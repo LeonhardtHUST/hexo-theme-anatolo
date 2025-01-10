@@ -18,7 +18,7 @@ mixin require_comment_scripts
       script(src="https://unpkg.com/gitalk/dist/gitalk.min.js")
 
 mixin make_comments
-  if theme.always_enable_comments || page.comments
+  if (theme.always_enable_comments && page.comments != false) || page.comments
     if theme.duoshuo
       a#comments
       .ds-thread(data-thread-key=page.path, data-title=page.title, data-url=page.permalink, data-author-key="1")
@@ -124,6 +124,8 @@ mixin make_comments
             crossorigin="anonymous"
             async
           )
+            span(style="color: rgba(62, 62, 62, 1)")
+              Loading comments...
         if ur_autodark 
           script.reload.
             function darkModeSync() {

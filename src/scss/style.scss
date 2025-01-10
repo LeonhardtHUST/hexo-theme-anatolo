@@ -170,7 +170,7 @@
 }
 
 .pagination {
-  margin: 30px;
+  margin: 0px 30px 30px 30px;
   padding: 0px 0 56px 0;
   border-bottom: $site-border;
   transition: border 0.8s;
@@ -689,7 +689,7 @@ a.btn {
     // padding-top: 1.5rem;
     // padding-bottom: 1.5rem;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .friend-link-container {
@@ -699,7 +699,7 @@ a.btn {
 
 .friend-link-box {
   width: 280px;
-  margin: 10px;
+  margin: 5px;
   padding: 10px;
   border: 1px solid var(--primary-100);
   border-radius: 10px;
