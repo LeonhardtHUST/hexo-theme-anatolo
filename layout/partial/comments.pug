@@ -124,8 +124,8 @@ mixin make_comments
             crossorigin="anonymous"
             async
           )
-            span(style="color: rgba(62, 62, 62, 1)")
-              Loading comments...
+          span.utrc-loading.
+            Loading comments...
         if ur_autodark 
           script.reload.
             function darkModeSync() {
@@ -143,27 +143,29 @@ mixin make_comments
               }
               //- console.log(Anatolo.darkLightGet());
             }
-            console.log('reload');
-            darkModeSync();
+            function hideLoading() {
+              let hide = () => {
+                let utrcLoading = document.querySelector('.utrc-loading');
+                //- console.log(utrcLoading);
+                utrcLoading.style.display = 'none';
+              }
+              let utrcIframe = document.querySelector('.utterances-frame');
+              if (utrcIframe)
+                hide();
+            }
+
             window.onload = () => {
-              //- console.log('loaded');
+              hideLoading();
               darkModeSync();
             };
-            new MutationObserver(() => {
+
+            document.querySelector('.utrc-loading').style.display = 'block';
+            
+            function set() {
+              hideLoading();
               darkModeSync();
-              let el = document.getElementsByClassName('utterances-frame')[0];
-              //- console.log(el);
-              if (el) {
-                //- console.log(el);
-                //- el.addEventListener('load', darkModeSync);
-                //- new MutationObserver(() => {
-                //-   darkModeSync();
-                //-   console.log(el);
-                //- }).observe(el, { childList: true, subtree: true });
-                el.contentWindow.onload = () => {
-                  darkModeSync();
-                };
-              }
-            })
-              .observe(document.getElementById('utrc_container'), { childList: true, subtree: true });
+              if (!document.querySelector('.utterances-frame'))
+                setTimeout(set, 100);
+            }
+            set();
 
